@@ -1,0 +1,92 @@
+<html>
+    <head></head>
+    <body>
+        <div id="wrapper">
+            <div class="background first" onclick="userClick('black')">
+                <span class="fore">가나다라<br>ABCD<br>1234</span>
+            </div>
+            <div class="background second" onclick="userClick('white')">
+                <span class="fore">가나다라<br>ABCD<br>1234</span>
+            </div>
+        </div>
+        <div class="grid">
+            <pre class="black"></pre>
+            <pre class="white"></pre>
+        </div>
+        <pre></pre>
+        <!-- <div id="background" style="position: relative; width: 300px;height: 300px;margin: auto;text-align: center;">
+        </div> -->
+    </body>
+    <script>
+        test = ()=>{
+            ca = [r(),r(),r()]
+            var c = `rgb(${ca[0]},${ca[1]},${ca[2]})`
+            // var arr = [...document.querySelectorAll('#background')]
+            // arr.forEach(e=>e.style.backgroundColor=c)
+            // var arr = [...document.querySelectorAll('#background')]
+            // arr.forEach(e=>e.style.backgroundColor=c)
+            document.querySelector('#wrapper').style.setProperty('--random',c)
+        }
+        r = ()=>{
+            return Math.floor(Math.random()*256)
+        }
+        userClick = (color)=>{
+            color == 'white' ? white.push(ca) : black.push(ca)
+            getData()
+            test()
+        }
+        getData = ()=>{
+            // console.log('Black : ')
+            // console.log('[\n\t'+black.map(v=>JSON.stringify(v)).join(',\n\t')+'\n]')
+            document.querySelector('pre.black').innerText = ('[\n\t'+black.map(v=>JSON.stringify(v)).join(',\n\t')+'\n]')
+            // console.log('White : ')
+            // console.log('[\n\t'+white.map(v=>JSON.stringify(v)).join(',\n\t')+'\n]')
+            document.querySelector('pre.white').innerText = ('[\n\t'+white.map(v=>JSON.stringify(v)).join(',\n\t')+'\n]')
+        }
+        // ca=[255,255,255]
+        white=[]
+        black=[]
+        test()
+    </script>
+    <style>
+        .background {
+            width: 300px;
+            height: 300px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--random);
+            cursor: pointer;
+        }
+        .fore {
+            font-weight: bold;
+            font-size: 32px;
+        }
+        .first .fore {
+            color: #000;
+        }
+        .second .fore {
+            color: #fff;
+        }
+        .grid {
+            display: flex;
+            /* grid-template-columns: repeat(2, 1fr); */
+            width: 700px;
+            justify-content: space-between;
+            margin: auto;
+        }
+        #wrapper {
+            width: 700px;
+            height: 300px;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+        }
+        pre {
+            display: inline-block;
+            width: 300px;
+            font-family: 'Consolas';
+        }
+    </style>
+</html>
